@@ -17,6 +17,10 @@ class SearchBar extends React.Component{
                         <label>Image Search</label>
                         {/** OnInputChange is a callback function but we don't use OnInputChange() here */}
                         {/** because it will call the function everytime when render() is called */}
+                        {/** we could also use a different way that we don't have to define a separate method */}
+                        {/** if there is only one line to do in the function */}
+                        {/** onChange={(event) => console.log(event.target.value)} */}
+                        {/** or abbreviated onChange={(e) => console.log(e.target.value)} */}
                         <input type="text" onChange={this.OnInputChange} />
                     </div>
                 </form>
