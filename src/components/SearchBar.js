@@ -12,10 +12,21 @@ class SearchBar extends React.Component{
     // change from uncontrolled elements to controlled elements
     state = { term: '' };
 
+    // use the same way that the function OnInputChange used to be to handle submit
+    // if we don't use the arrow function here, "this" is going to be undefined
+    // arrow function automatically bind the value of "this" for all the code inside the function
+    onFromSubmit = (event) => {
+        // don't let the form to attempt to submit itself and thus refresh the page
+        event.preventDefault();
+
+        // now the value of "this" has already bind
+        console.log(this.state.term);
+    }
+
     render(){
         return (
             <div className="ui segment">
-                <form className="ui form">
+                <form onSubmit={this.onFromSubmit} className="ui form">
                     <div className="field">
                         <label>Image Search</label>
                         {/** OnInputChange is a callback function but we don't use OnInputChange() here */}
