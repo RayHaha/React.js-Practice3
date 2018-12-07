@@ -20,7 +20,8 @@ class SearchBar extends React.Component{
         event.preventDefault();
 
         // now the value of "this" has already bind
-        console.log(this.state.term);
+        // the different between using props in function based component and class based component is this.props
+        this.props.onSubmit(this.state.term);
     }
 
     render(){
