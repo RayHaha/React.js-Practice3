@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import upsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 
 // refactor function based App to a class based component
@@ -17,11 +17,8 @@ class App extends React.Component{
         // use axios.get to search the photos
         // the first argument is the address
         // the second argument is an object that will have a bunch of options that will custimize this request
-        const response = await axios.get('https://api.unsplash.com/search/photos', {
+        const response = await unsplash.get('/search/photos', {
             params: { query: term },
-            headers: {
-                Authorization: 'Client-ID 2d5b213c5d7a96abf39c7ed377fc99af033cf497a6610cf5dd94b5150cf445ef'
-            }
         });
 
         // console.log(response.data.results);
