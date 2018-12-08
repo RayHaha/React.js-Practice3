@@ -1,6 +1,7 @@
 import React from 'react';
 import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
+import ImageList from './ImageList';
 
 // refactor function based App to a class based component
 // so we can use the function onSearchSubmit to get callback from children
@@ -43,8 +44,8 @@ class App extends React.Component{
                 {/** pass onSearchSubmit down to SearchBar as a props */}
                 {/** it's okay to change the name of "onSubmit" */}
                 <SearchBar onSubmit={this.onSearchSubmit} />
-                {/** output the number of images for test first */}
-                Found: {this.state.images.length} images
+                {/** use props to send the images we searched previously */}
+                <ImageList images={this.state.images} />
             </div>
         );
     }
