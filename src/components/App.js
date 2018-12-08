@@ -1,5 +1,5 @@
 import React from 'react';
-import upsplash from '../api/unsplash';
+import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 
 // refactor function based App to a class based component
