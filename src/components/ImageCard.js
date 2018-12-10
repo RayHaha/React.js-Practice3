@@ -4,6 +4,9 @@ class ImageCard extends React.Component{
     constructor(props){
         super(props);
 
+        // initialize state
+        this.state = { spans: 0 };
+
         // create a reference
         this.imageRef = React.createRef();
     }
@@ -17,7 +20,11 @@ class ImageCard extends React.Component{
 
     // make it an arrow function to bind the "this"
     setSpans = () => {
-        console.log(this.imageRef.current.clientHeight);
+        // get height then count span
+        const height = this.imageRef.current.clientHeight;
+        const spans = Math.ceil(height / 10);
+        // use state to store the span 
+        this.setState({ spans });   // equal to this.setState({ spans: spans });
     }
 
     render(){
@@ -26,8 +33,9 @@ class ImageCard extends React.Component{
         const { description, urls} = this.props.image;
         // this means that description and urls are from this.props.image
 
+        // send spans here
         return (
-            <div>
+            <div style={{ gridRowEnd: `span ${this.state.spans}`}}>
                 {/** then send imageRef here */}
                 <img 
                     ref={this.imageRef}
