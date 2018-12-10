@@ -1,6 +1,25 @@
 import React from 'react';
 
 class ImageCard extends React.Component{
+    constructor(props){
+        super(props);
+
+        // create a reference
+        this.imageRef = React.createRef();
+    }
+
+    // use componentDidMount to run only one time to get the information of clientHeight
+    componentDidMount(){
+        // use the addEventListener with callback function or it'll run before the image be loaded
+        // and it'll get the value 0, set the callback function named setSpans
+        this.imageRef.current.addEventListener('load', this.setSpans);
+    }
+
+    // make it an arrow function to bind the "this"
+    setSpans = () => {
+        console.log(this.imageRef.current.clientHeight);
+    }
+
     render(){
         // because that we'll refer to this.props.image so many times
         // so we can use the same way in ImageList
@@ -9,7 +28,9 @@ class ImageCard extends React.Component{
 
         return (
             <div>
+                {/** then send imageRef here */}
                 <img 
+                    ref={this.imageRef}
                     alt={description}
                     src={urls.regular}
                 />
